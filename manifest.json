@@ -1,0 +1,149 @@
+{
+  "id": "community.spotiflacbridge",
+  "name": "FLAC Bridge Multi",
+  "version": "2.3.0",
+  "versionCode": 12,
+  "apiVersion": 1,
+  "minAppVersion": "2.1.0",
+  "author": "Community adapter",
+  "description": "Controllo automatico all’avvio e rinnovo delle sessioni circa ogni 6 ore mentre Myspoti è attiva.",
+  "category": "tools",
+  "tags": [
+    "audio",
+    "flac",
+    "lossless",
+    "music"
+  ],
+  "replaces": [
+    "community.monoflac"
+  ],
+  "actions": [
+    {
+      "name": "audio.source",
+      "why": "Cerca un brano FLAC fra le sorgenti attivate"
+    },
+    {
+      "name": "download.source",
+      "why": "Offre a Myspoti i FLAC compatibili per il download"
+    },
+    {
+      "name": "network",
+      "hosts": [
+        "api.zarz.moe",
+        "tidal.com",
+        "www.qobuz.com",
+        "api.deezer.com",
+        "song.link",
+        "streaming-qobuz-std.akamaized.net",
+        "dl.musicdl.me",
+        "*.dzcdn.net",
+        "*.cloudfront.net"
+      ],
+      "why": "Cerca corrispondenze, interroga le fonti e controlla i FLAC diretti"
+    },
+    {
+      "name": "webview.auth",
+      "why": "Apre la verifica richiesta dal server per ogni fonte"
+    },
+    {
+      "name": "storage",
+      "why": "Conserva sul dispositivo le sessioni della verifica"
+    },
+    {
+      "name": "settings.page",
+      "why": "Permette di attivare, ordinare o cancellare le fonti"
+    },
+    {
+      "name": "notify",
+      "why": "Mostra l'esito delle verifiche o gli errori principali"
+    }
+  ],
+  "media": {
+    "hosts": [
+      "*.audio.tidal.com",
+      "streaming-qobuz-std.akamaized.net",
+      "dl.musicdl.me",
+      "*.dzcdn.net",
+      "*.cloudfront.net"
+    ]
+  },
+  "settings": [
+    {
+      "key": "preferred",
+      "type": "choice",
+      "label": "Prima sorgente",
+      "description": "Se non trova un FLAC compatibile, prova le altre sorgenti attivate entro il tempo disponibile.",
+      "default": "Tidal",
+      "options": [
+        "Tidal",
+        "Qobuz",
+        "Deezer",
+        "Amazon Music"
+      ]
+    },
+    {
+      "key": "auto_verify",
+      "type": "toggle",
+      "label": "Verifica automatica all’avvio",
+      "description": "All’avvio e circa ogni 6 ore quando Myspoti è attiva, controlla e tenta il rinnovo delle sessioni; rispetta i limiti del server.",
+      "default": true
+    },
+    {
+      "key": "show_waits",
+      "type": "button",
+      "label": "Mostra tempi di attesa",
+      "description": "Mostra le pause e il funzionamento del rinnovo periodico nel Registro, senza inviare richieste."
+    },
+    {
+      "key": "force_verify",
+      "type": "button",
+      "label": "Forza verifica manuale",
+      "description": "Un tentativo per la Prima sorgente anche prima della scadenza memorizzata; il server può rispondere 429."
+    },
+    {
+      "key": "verify_all",
+      "type": "button",
+      "label": "Riprova verifica automatica",
+      "description": "Riprende i controlli: verifica le sorgenti necessarie e rinnova le sessioni dovute, rispettando le pause del server."
+    },
+    {
+      "key": "verify_tidal",
+      "type": "button",
+      "label": "Attiva Tidal",
+      "description": "Un tentativo manuale Tidal, quando l’attesa esplicita del server è scaduta."
+    },
+    {
+      "key": "verify_qobuz",
+      "type": "button",
+      "label": "Attiva Qobuz",
+      "description": "Un tentativo manuale Qobuz senza account, quando l’attesa del server è scaduta."
+    },
+    {
+      "key": "verify_deezer",
+      "type": "button",
+      "label": "Attiva Deezer (sperimentale)",
+      "description": "Tentativo manuale: la riproduzione rimane limitata ai FLAC diretti non cifrati."
+    },
+    {
+      "key": "verify_amazon",
+      "type": "button",
+      "label": "Attiva Amazon Music (sperimentale)",
+      "description": "Tentativo manuale: la riproduzione rimane limitata ai FLAC diretti non cifrati."
+    },
+    {
+      "key": "forget",
+      "type": "button",
+      "label": "Cancella tutte le sessioni",
+      "description": "Rimuove le sessioni e sospende la verifica automatica finché non la riattivi."
+    }
+  ],
+  "welcome": {
+    "message": "FLAC Bridge Multi è un adattatore indipendente: Tidal, Qobuz e supporto sperimentale limitato per Deezer e Amazon Music.",
+    "steps": [
+      "La verifica automatica delle sorgenti parte quando Myspoti è online.",
+      "Se appare una pagina di verifica, completa il controllo richiesto dal server.",
+      "Metti FLAC Bridge Multi prima di Spotify nell’ordine delle sorgenti audio."
+    ]
+  },
+  "changelog": "Controllo automatico all’avvio e tentativo di rinnovo delle sessioni ogni 6 ore mentre Myspoti è attiva. Diagnostica nel Registro e rispetto delle pause HTTP 429."
+}
