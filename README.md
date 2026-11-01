@@ -20,12 +20,6 @@ Questa versione conserva Tidal, Qobuz, Deezer e Amazon Music e aggiunge un contr
 
 **Mostra tempi di attesa** visualizza nel Registro le pause memorizzate, senza contattare il server. **Attiva Tidal/Qobuz/Deezer/Amazon** rispettano l'attesa indicata dal server. **Forza verifica manuale** può inviare un solo tentativo per la **Prima sorgente** prima della scadenza memorizzata; il server può comunque rispondere 429. Una richiesta anticipata potrebbe prolungare la limitazione: non ripeterla continuamente. È previsto un intervallo di sicurezza di 30 secondi tra tentativi manuali e non si apre una seconda pagina mentre ce n'è già una.
 
-## Apple Music
-
-Non è stata aggiunta come sorgente audio: l'estensione Apple Music presente nel registro ufficiale Mornye/SpotiFLAC è dichiarata per **metadati e testi**, non come provider di download audio. Non sarebbe corretto presentarla come sorgente lossless riproducibile. Riferimento: https://github.com/mornyeapp/Mornye-Extension/blob/main/registry.json
-
-Deezer e Amazon restano parziali: accettano solo i FLAC diretti non cifrati compatibili. I test sono stati eseguiti nel runtime Myspoti 2.1 con risposte simulate; non sono state provate sessioni reali, rinnovi reali o riproduzione su Android. Non inviare password, token, codici, ticket o link di verifica.
----
 
 # FLAC Bridge Multi per Myspoti
 
